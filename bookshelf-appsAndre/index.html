@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bookshelf Apps</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header class="py-4 px-8 bg-blue-600 text-white flex justify-between items-center">
+      <h1 class="text-lg font-semibold">Bookshelf Apps</h1>
+      <div class="flex gap-4">
+        <div class="form-control">
+          <div class="input-group">
+            <input type="text" placeholder="Cari buku" id="inputKeyword" class="input input-bordered text-base-content" />
+            <button class="btn btn-square bg-base-100 text-blue-600 border-0" id="searchBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <label for="my-modal-3" class="btn bg-base-content">Tambah Buku</label>
+      </div>
+    </header>
+    <main>
+      <div class="grid grid-cols-11 mx-auto">
+        <div class="container p-4 rounded col-span-5">
+          <p class="mt-4 mb-8 text-2xl text-center text-base-content/80 font-semibold">Selesai Dibaca</p>
+          <div id="completeBookshelfList" class="grid grid-cols-1 lg:grid-cols-2 gap-4"></div>
+        </div>
+        <div class="divider divider-horizontal w-fit mx-auto"></div>
+        <div class="container p-4 rounded col-span-5">
+          <p class="mt-4 mb-8 text-2xl text-center text-base-content/80 font-semibold">Belum Selesai Dibaca</p>
+          <div id="incompleteBookshelfList" class="grid grid-cols-1 lg:grid-cols-2 gap-4"></div>
+        </div>
+      </div>
+
+      <!-- Put this part before </body> tag -->
+      <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+      <div class="modal">
+        <div class="modal-box relative">
+          <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+          <h3 class="text-lg font-bold">Tambah Data Buku</h3>
+
+          <form id="inputBook">
+            <div class="form-control w-full mb-4">
+              <label class="label" for="inputBookTitle">Judul</label>
+              <input type="text" id="inputBookTitle" class="input input-bordered input-accent w-full" required />
+            </div>
+            <div class="form-control w-full mb-4">
+              <label class="label" for="inputBookAuthor">Penulis</label>
+              <input type="text" id="inputBookAuthor" class="input input-bordered input-accent w-full" required />
+            </div>
+            <div class="form-control w-full mb-4">
+              <label class="label" for="inputBookYear">Tahun</label>
+              <input type="number" id="inputBookYear" class="input input-bordered input-accent w-full" required />
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <input type="checkbox" id="inputBookIsComplete" checked="checked" class="checkbox checkbox-xs" />
+                <label class="label" for="inputBookIsComplete">Selesai Dibaca</label>
+              </div>
+              <button class="btn btn-accent" id="bookSubmit" type="submit">Tambahkan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+      <div class="modal">
+        <div class="modal-box relative">
+          <label for="my-modal-4" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+          <h3 class="text-lg font-bold">Edit Data Buku</h3>
+
+          <form id="editBook">
+            <input type="hidden" name="id" id="bookId" />
+            <div class="form-control w-full mb-4">
+              <label class="label" for="inputBookTitleEdit">Judul</label>
+              <input type="text" id="inputBookTitleEdit" class="input input-bordered input-accent w-full" required />
+            </div>
+            <div class="form-control w-full mb-4">
+              <label class="label" for="inputBookAuthorEdit">Penulis</label>
+              <input type="text" id="inputBookAuthorEdit" class="input input-bordered input-accent w-full" required />
+            </div>
+            <div class="form-control w-full mb-4">
+              <label class="label" for="inputBookYearEdit">Tahun</label>
+              <input type="number" id="inputBookYearEdit" class="input input-bordered input-accent w-full" required />
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <input type="checkbox" id="inputBookIsCompleteEdit" checked="checked" class="checkbox checkbox-xs" />
+                <label class="label" for="inputBookIsCompleteEdit">Selesai Dibaca</label>
+              </div>
+              <button class="btn btn-accent" id="bookSubmit" type="submit">Edit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="toast"></div>
+    </main>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
